@@ -63,7 +63,7 @@ def dijkstra_generalized(graph, source, weight='weight',
  for v in N:
      if graph.has_edge(u, v):
          D[v] = c(u, v)
-         P[v] = [u] #add an entry to the predecessor dictionary
+         P[v] = [u] #add an entry to the predecessor dictionary, children nodes with a source
          
          D[u] = 0 # over-write inf entry for source
  # Loop
@@ -76,4 +76,5 @@ def dijkstra_generalized(graph, source, weight='weight',
          DvNew = D[w] + c(w, v)
          if DvNew < D[v]:
              D[v] = DvNew
+             P[v] = [w] #add a current node with its predecessor
  return D
